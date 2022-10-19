@@ -41,17 +41,18 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def click({conn, {:ok, view, _html}}, selector, text \\ nil, opts \\ []) do
+      def click({conn, {:ok, view, _html}}, selector, text \\ nil) do
         html =
           view
           |> element(selector, text)
           |> render_click()
 
-        if Keyword.get(opts, :follow, false) do
-          {conn, follow_redirect(html, conn)}
-        else
-          {conn, {:ok, view, html}}
-        end
+        {conn, {:ok, view, html}}
+      end
+
+      def follow(session, selector, text \\ nil) do
+        {conn, {:ok, _view, html}} = click(session, selector, text)
+        {conn, follow_redirect(html, conn)}
       end
 
       def change_form({conn, {:ok, view, _html}}, selector, attributes) do
@@ -63,17 +64,13 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def submit_form({conn, {:ok, view, _html}}, selector, attributes, opts \\ []) do
+      def submit_form({conn, {:ok, view, _html}}, selector, attributes) do
         html =
           view
           |> form(selector, attributes)
           |> render_submit()
 
-        if Keyword.get(opts, :follow, true) do
-          {conn, follow_redirect(html, conn)}
-        else
-          {conn, {:ok, view, html}}
-        end
+        {conn, follow_redirect(html, conn)}
       end
     end
   end

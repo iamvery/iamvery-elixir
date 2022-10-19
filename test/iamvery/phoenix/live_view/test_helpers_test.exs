@@ -5,7 +5,7 @@ end
 
 defmodule Phoenix.LiveViewTest do
   @moduledoc "A test fake to stand in for the real Phoenix module"
-  @html "<html>Edit Link. Link updated successfully. It can't be blank</html>"
+  @html "<html>Home. Edit Link. Link updated successfully. It can't be blank</html>"
   def live(_, _), do: {:ok, :live, @html}
   def form(:live, _, _), do: :form
   def element(:live, _, _), do: :live
@@ -46,5 +46,8 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> assert_html("Link updated successfully")
     |> rerender()
     |> assert_html("Edit Link")
+    |> follow("a", "Home")
+    |> follow(".home")
+    |> assert_html("Home")
   end
 end
