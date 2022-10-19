@@ -31,17 +31,17 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def assert_element({conn, {:ok, view, html}}, selector, text) do
+      def assert_element({conn, {:ok, view, html}}, selector, text \\ nil) do
         assert has_element?(view, selector, text)
         {conn, {:ok, view, html}}
       end
 
-      def refute_element({conn, {:ok, view, html}}, selector, text) do
+      def refute_element({conn, {:ok, view, html}}, selector, text \\ nil) do
         refute has_element?(view, selector, text)
         {conn, {:ok, view, html}}
       end
 
-      def click({conn, {:ok, view, _html}}, selector, text, opts \\ []) do
+      def click({conn, {:ok, view, _html}}, selector, text \\ nil, opts \\ []) do
         html =
           view
           |> element(selector, text)
