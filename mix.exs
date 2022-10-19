@@ -5,7 +5,7 @@ defmodule Iamvery.MixProject do
   """
 
   @package [
-    files: ["lib", "mix.exs", "README"],
+    files: ["lib", "mix.exs", "README*"],
     maintainers: ["Jay Hayes"],
     licenses: ["MIT"],
     links: %{"GitHub" => "https://github.com/iamvery/iamvery-elixir"}
