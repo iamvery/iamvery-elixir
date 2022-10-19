@@ -64,17 +64,13 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def submit_form({conn, {:ok, view, _html}}, selector, attributes, opts \\ []) do
+      def submit_form({conn, {:ok, view, _html}}, selector, attributes) do
         html =
           view
           |> form(selector, attributes)
           |> render_submit()
 
-        if Keyword.get(opts, :follow, true) do
-          {conn, follow_redirect(html, conn)}
-        else
-          {conn, {:ok, view, html}}
-        end
+        {conn, follow_redirect(html, conn)}
       end
     end
   end
