@@ -9,7 +9,8 @@ defmodule Phoenix.LiveViewTest do
   def live(_, _), do: {:ok, :live, @html}
   def form(:live, _, _), do: :form
   def element(:live, _, _), do: :live
-  def has_element?(:live, _, _), do: true
+  def has_element?(:live, _, "yes"), do: true
+  def has_element?(:live, _, "no"), do: false
   def follow_redirect(@html, :conn), do: {:ok, :live, @html}
   def render(:live), do: @html
   def render_click(:live), do: @html
@@ -32,7 +33,8 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> assert_html("Edit Link")
     |> refute_html("lolwat")
     |> assert_path("/")
-    |> assert_element(".lolwat", "Haha")
+    |> assert_element(".lolwat", "yes")
+    |> refute_element(".lolwat", "no")
     |> change_form("#widget-form", widget: %{})
     |> assert_html(escape("can't be blank"))
     |> submit_form("#widget-form", widget: %{lol: "wat"})
