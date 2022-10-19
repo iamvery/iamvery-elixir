@@ -2,6 +2,9 @@ defmodule Iamvery.MixProject do
   use Mix.Project
 
   @description """
+  A set of Elixir utilities for myself and others. Using this Hex package as a
+  test bed for ideas that may be eventually spun off as separate projects or
+  open source contributions.
   """
 
   @package [
