@@ -1,6 +1,7 @@
-# Iamvery
+# Iamvery Elixir
 
-**TODO: Add description**
+A set of Elixir utilities for myself and others.
+Using this Hex package as a test bed for ideas that may be eventually spun off as separate projects or open source contributions.
 
 ## Installation
 
@@ -19,3 +20,9 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at <https://hexdocs.pm/iamvery>.
 
+## Phoenix LiveView Test Helpers
+
+I've put together a set of test helper functions for testing Phoenix LiveView.
+Blog post forthcoming.
+
+https://github.com/iamvery/iamvery-elixir/blob/master/lib/iamvery/phoenix/live_view/test_helpers.ex
