@@ -54,6 +54,11 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         end
       end
 
+      def follow(session, selector, text \\ nil) do
+        {conn, {:ok, _view, html}} = click(session, selector, text)
+        {conn, follow_redirect(html, conn)}
+      end
+
       def change_form({conn, {:ok, view, _html}}, selector, attributes) do
         html =
           view
