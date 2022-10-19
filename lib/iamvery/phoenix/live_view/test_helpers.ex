@@ -41,17 +41,13 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def click({conn, {:ok, view, _html}}, selector, text \\ nil, opts \\ []) do
+      def click({conn, {:ok, view, _html}}, selector, text \\ nil) do
         html =
           view
           |> element(selector, text)
           |> render_click()
 
-        if Keyword.get(opts, :follow, false) do
-          {conn, follow_redirect(html, conn)}
-        else
-          {conn, {:ok, view, html}}
-        end
+        {conn, {:ok, view, html}}
       end
 
       def follow(session, selector, text \\ nil) do
