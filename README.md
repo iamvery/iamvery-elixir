@@ -1,5 +1,7 @@
 # Iamvery Elixir
 
+[![Hex.pm](https://img.shields.io/hexpm/v/iamvery.svg)](https://hex.pm/packages/iamvery)
+
 A set of Elixir utilities for myself and others.
 Using this Hex package as a test bed for ideas that may be eventually spun off as separate projects or open source contributions.
 
