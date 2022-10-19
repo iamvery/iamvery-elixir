@@ -17,7 +17,7 @@ defmodule Iamvery.MixProject do
   def project do
     [
       app: :iamvery,
-      version: "0.3.0",
+      version: "0.4.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
       description: @description,
