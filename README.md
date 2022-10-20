@@ -34,8 +34,11 @@ import Phoenix.LiveViewTest
 
 test "live view", %{conn: conn} do
   {:ok, live, html} = live(conn, "/")
-  assert html =~ "lolwat"
-  live |> element("a") |> render_click() =~ "clicked
+  assert html =~ "New"
+  assert live |> element("a.new") |> render_click() =~ "Enter new"
+  assert_patch(live, "/new")
+  {:ok, _, html} = live |> form(".form", @attrs) |> render_submit() |> follow_redirect(conn)
+  assert html =~ "success"
 end
 ```
 
@@ -46,9 +49,12 @@ use Iamvery.Phoenix.LiveView.TestHelpers
 
 test "live view", %{conn: conn} do
   start(conn, "/")
-  |> assert_html("lolwat")
-  |> click("a")
-  |> assert_html("clicked")
+  |> assert_html("New")
+  |> click("a.new")
+  |> assert_html("Enter new")
+  |> assert_path("/new")
+  |> submit_form(".form", @attrs)
+  |> assert_html("success")
 end
 ```
 
