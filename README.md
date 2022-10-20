@@ -27,7 +27,30 @@ be found at <https://hexdocs.pm/iamvery>.
 I've put together a set of test helper functions for testing Phoenix LiveView.
 For more details on this pattern, see the [blog post][live-view-helpers-blog].
 
-https://github.com/iamvery/iamvery-elixir/blob/master/lib/iamvery/phoenix/live_view/test_helpers.ex
+As a quick example, the helpers let you go from:
+
+```elixir
+import Phoenix.LiveViewTest
+
+test "live view", %{conn: conn} do
+  {:ok, live, html} = live(conn, "/")
+  assert html =~ "lolwat"
+  live |> element("a") |> render_click() =~ "clicked
+end
+```
+
+To:
+
+```elixir
+use Iamvery.Phoenix.LiveView.TestHelpers
+
+test "live view", %{conn: conn} do
+  start(conn, "/")
+  |> assert_html("lolwat")
+  |> click("a")
+  |> assert_html("clicked")
+end
+```
 
 
 [live-view-helpers-blog]: https://iamvery.com/2022/10/19/better-live-view-tests.html
