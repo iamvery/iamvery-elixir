@@ -58,5 +58,11 @@ test "live view", %{conn: conn} do
 end
 ```
 
+## Copyright and License
+
+Copyright (c) 2022, Jay Hayes.
+
+Source code is licensed under the [MIT License](LICENSE.md).
+
 
 [live-view-helpers-blog]: https://iamvery.com/2022/10/19/better-live-view-tests.html
