@@ -16,6 +16,11 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
+      def browser({conn, {:ok, view, html}}) do
+        open_browser(view)
+        {conn, {:ok, view, html}}
+      end
+
       def assert_html({conn, {:ok, view, html}}, expected_html) do
         assert html =~ expected_html
         {conn, {:ok, view, html}}
