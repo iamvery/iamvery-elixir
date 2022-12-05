@@ -13,7 +13,7 @@ by adding `iamvery` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:iamvery, "~> 0.6.0", only: :test}
+    {:iamvery, "~> 0.7.0", only: :test}
   ]
 end
 ```

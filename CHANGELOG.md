@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2022-12-05
+
+### Added
+- New `Iamvery.Phoenix.LiveView.TestHelpers.assert_visible` and `refute_visible` functions added. See #7
+
 ## [0.6.0] - 2022-10-19
 
 ### Added
@@ -18,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.1.0 - [0.5.0] - 2022-10-19
 Introduction of `Iamvery.Phoenix.LiveView.TestHelpers`.
 
-[Unreleased]: https://github.com/iamvery/iamvery-elixir/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/iamvery/iamvery-elixir/compare/v0.7.0...HEAD
+[0.7.0]: https://github.com/iamvery/iamvery-elixir/compare/v0.6.0...v0.7.0
 [0.6.0]: https://github.com/iamvery/iamvery-elixir/compare/v0.5.0...v0.6.0
 [0.5.0]: https://github.com/iamvery/iamvery-elixir/releases/tag/v0.5.0
