@@ -8,6 +8,7 @@ defmodule Phoenix.LiveViewTest do
   @html "<html>Home. Edit Link. Link updated successfully. It can't be blank</html>"
   def live(_, _), do: {:ok, :live, @html}
   def form(:live, _, _), do: :form
+  def element(:live, _), do: :live
   def element(:live, _, _), do: :live
   def has_element?(:live, _, "yes"), do: true
   def has_element?(:live, _, "no"), do: false
@@ -38,6 +39,8 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> refute_html("lolwat")
     |> refute_visible("lolwat")
     |> assert_path("/")
+    |> assert_visible("html", "Home")
+    |> refute_visible("html", "Away")
     |> assert_element(".lolwat", "yes")
     |> assert_element(".lolwat")
     |> refute_element(".lolwat", "no")
