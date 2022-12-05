@@ -26,6 +26,21 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
+      def assert_visible(session, expected), do: assert_html(session, expected)
+      def refute_visible(session, expected), do: refute_html(session, expected)
+
+      def assert_visible({conn, {:ok, view, _html}}, selector, expected_html) do
+        html = element(view, selector) |> render()
+        assert html =~ expected_html
+        {conn, {:ok, view, html}}
+      end
+
+      def refute_visible({conn, {:ok, view, _html}}, selector, unexpected_html) do
+        html = element(view, selector) |> render()
+        refute html =~ unexpected_html
+        {conn, {:ok, view, html}}
+      end
+
       def assert_path({conn, {:ok, view, html}}, path) do
         assert_patch(view, path)
         {conn, {:ok, view, html}}
