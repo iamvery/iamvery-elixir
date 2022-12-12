@@ -48,6 +48,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> assert_path("/")
     |> assert_visible("div", "Edit Link")
     |> refute_visible("html", "Away")
+    |> refute_visible("SPECIAL")
     |> assert_element(".lolwat", "yes")
     |> assert_element(".lolwat")
     |> refute_element(".lolwat", "no")

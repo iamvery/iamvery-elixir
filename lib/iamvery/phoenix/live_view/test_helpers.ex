@@ -35,9 +35,9 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def refute_visible({conn, {:ok, view, _html}}, selector, unexpected_html) do
-        html = element(view, selector) |> render()
-        refute html =~ unexpected_html
+      def refute_visible({conn, {:ok, view, html}}, selector, unexpected_html) do
+        element_html = element(view, selector) |> render()
+        refute element_html =~ unexpected_html
         {conn, {:ok, view, html}}
       end
 
