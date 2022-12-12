@@ -5,11 +5,12 @@ end
 
 defmodule Phoenix.LiveViewTest do
   @moduledoc "A test fake to stand in for the real Phoenix module"
-  @html "<html>Home. Edit Link. Link updated successfully. It can't be blank</html>"
+  @html "<html>Home. <div>Edit Link</div>. Link updated successfully. It can't be blank</html>"
+  @element "<div>Edit Link</div> SPECIAL"
   def live(_, _), do: {:ok, :live, @html}
   def form(:live, _, _), do: :form
-  def element(:live, _), do: :live
-  def element(:live, _, _), do: :live
+  def element(:live, _), do: :element
+  def element(:live, _, _), do: :element
   def has_element?(:live, _, "yes"), do: true
   def has_element?(:live, _, "no"), do: false
   def has_element?(:live, ".no", _), do: false
@@ -17,7 +18,9 @@ defmodule Phoenix.LiveViewTest do
   def follow_redirect(@html, :conn), do: {:ok, :live, @html}
   def follow_redirect(redirect, :conn), do: redirect
   def render(:live), do: @html
+  def render(:element), do: @element
   def render_click(:live), do: @html
+  def render_click(:element), do: @html
   def render_change(:form), do: @html
   def render_submit(:form), do: @html
   def assert_patch(:live, _), do: {:ok, :live, @html}
@@ -33,6 +36,9 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     conn = :conn
 
     start(conn, "/")
+    |> assert_visible("Home")
+    |> assert_visible("div", "Edit Link")
+    |> assert_visible("Home")
     |> click("#link-1 a", "Edit")
     |> click("#link-1 a")
     |> assert_html("Edit Link")
@@ -40,8 +46,9 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> refute_html("lolwat")
     |> refute_visible("lolwat")
     |> assert_path("/")
-    |> assert_visible("html", "Home")
+    |> assert_visible("div", "Edit Link")
     |> refute_visible("html", "Away")
+    |> refute_visible("SPECIAL")
     |> assert_element(".lolwat", "yes")
     |> assert_element(".lolwat")
     |> refute_element(".lolwat", "no")
