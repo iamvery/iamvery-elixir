@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixes
+- Incorrect return value for rendered HTML prevents pipelining. See #12
+
 ## [0.8.1] - 2022-12-12
 
 ### Fixes
