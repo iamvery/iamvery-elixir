@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- New `follow/1` function to follow a redirect w/o click. See #10
+
 ## [0.7.0] - 2022-12-05
 
 ### Added
