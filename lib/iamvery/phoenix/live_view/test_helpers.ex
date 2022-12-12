@@ -70,8 +70,8 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, follow_redirect(html, conn)}
       end
 
-      def follow({conn, {:ok, _view, html}}) do
-        {conn, follow_redirect(html, conn)}
+      def follow({conn, redirect}) do
+        {conn, follow_redirect(redirect, conn)}
       end
 
       def change_form({conn, {:ok, view, _html}}, selector, attributes) do
