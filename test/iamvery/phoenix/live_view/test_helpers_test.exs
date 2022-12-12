@@ -15,6 +15,7 @@ defmodule Phoenix.LiveViewTest do
   def has_element?(:live, ".no", _), do: false
   def has_element?(:live, _, nil), do: true
   def follow_redirect(@html, :conn), do: {:ok, :live, @html}
+  def follow_redirect(redirect, :conn), do: redirect
   def render(:live), do: @html
   def render_click(:live), do: @html
   def render_change(:form), do: @html
