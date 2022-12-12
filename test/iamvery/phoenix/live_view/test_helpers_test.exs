@@ -53,6 +53,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> assert_html("Edit Link")
     |> follow("a", "Home")
     |> follow(".home")
+    |> follow()
     |> assert_html("Home")
   end
 end
