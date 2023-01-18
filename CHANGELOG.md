@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2022-01-18
+
 ### Added
 - Port over duration Ecto types from a project I've been working on. See #14
 
@@ -36,7 +38,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## 0.1.0 - [0.5.0] - 2022-10-19
 Introduction of `Iamvery.Phoenix.LiveView.TestHelpers`.
 
-[Unreleased]: https://github.com/iamvery/iamvery-elixir/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/iamvery/iamvery-elixir/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/iamvery/iamvery-elixir/compare/v0.8.1...v0.9.0
 [0.8.1]: https://github.com/iamvery/iamvery-elixir/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/iamvery/iamvery-elixir/compare/v0.7.0...v0.8.0
 [0.7.0]: https://github.com/iamvery/iamvery-elixir/compare/v0.6.0...v0.7.0
