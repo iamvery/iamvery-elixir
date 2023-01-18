@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Port over duration Ecto types from a project I've been working on. See #14
+
 ## [0.8.1] - 2022-12-12
 
 ### Fixes
