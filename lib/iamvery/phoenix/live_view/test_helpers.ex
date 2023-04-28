@@ -57,17 +57,14 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       # Interactions
 
       def click({conn, {:ok, view, _html}}, selector, text \\ nil) do
-        html =
-          view
-          |> element(selector, text)
-          |> render_click()
-
-        {conn, {:ok, view, html}}
+        case element(view, selector, text) |> render_click() do
+          html when is_binary(html) -> {conn, {:ok, view, html}}
+          redirect -> {conn, follow_redirect(redirect, conn)}
+        end
       end
 
       def follow(session, selector, text \\ nil) do
-        {conn, {:ok, _view, html}} = click(session, selector, text)
-        {conn, follow_redirect(html, conn)}
+        click(session, selector, text)
       end
 
       def follow({conn, redirect}) do

@@ -44,6 +44,12 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
       |> click("#link-1 a")
       |> assert_visible("Home")
     end
+
+    test "following redirects happens implicitly", %{conn: conn} do
+      start(conn, "/")
+      |> click(".home")
+      |> assert_visible("Home")
+    end
   end
 
   test "the pipeline works", %{conn: conn} do
