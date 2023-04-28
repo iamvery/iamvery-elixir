@@ -42,7 +42,6 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
   end
 
   describe "regression tests" do
-    @tag :skip
     test "element scope leads to next assertion", %{conn: conn} do
       start(conn, "/")
       |> assert_visible(".lolwat", "yes")
