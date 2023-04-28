@@ -14,6 +14,30 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     {:ok, conn: conn}
   end
 
+  describe "assertions" do
+    test "asserting page content", %{conn: conn} do
+      session =
+        start(conn, "/")
+        |> assert_visible("Home")
+        |> assert_visible(".home", "Home")
+        |> refute_visible("Nope")
+        |> refute_visible(".home", "Nope")
+
+      assert_raise ArgumentError, ~r/expected selector/, fn ->
+        session |> refute_visible(".nope", "Home")
+      end
+    end
+
+    test "asserting page structure", %{conn: conn} do
+      start(conn, "/")
+      |> assert_element(".home")
+      |> assert_element(".home", "Home")
+      |> refute_element(".nope")
+      |> refute_element(".home", "Nope")
+      |> refute_element(".nope", "Home")
+    end
+  end
+
   test "the pipeline works", %{conn: conn} do
     start(conn, "/")
     |> click("#link-1 a", "Edit")
