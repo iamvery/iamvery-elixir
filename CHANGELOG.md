@@ -6,13 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2023-04-28
+
 ### Added
 - New function for easily opening current state of pipeline up in a browser. See #6 and #18
 
 ### Fixes
 - Incorrect return value for rendered HTML prevents pipelining. See #12
 
-## [0.9.0] - 2022-01-18
+## [0.9.0] - 2023-01-18
 
 ### Added
 - Port over duration Ecto types from a project I've been working on. See #14
