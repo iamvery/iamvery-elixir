@@ -13,16 +13,6 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       #############
       # Assertions
 
-      def assert_visible({conn, {:ok, view, html}}, expected_html) do
-        assert html =~ expected_html
-        {conn, {:ok, view, html}}
-      end
-
-      def refute_visible({conn, {:ok, view, html}}, unexpected_html) do
-        refute html =~ unexpected_html
-        {conn, {:ok, view, html}}
-      end
-
       def assert_html(session, expected) do
         IO.warn("The function assert_html/2 is deprecated. Use assert_visible/2 instead")
         assert_visible(session, expected)
@@ -31,6 +21,16 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       def refute_html(session, expected) do
         IO.warn("The function refute_html/2 is deprecated. Use refute_visible/2 instead")
         refute_visible(session, expected)
+      end
+
+      def assert_visible({conn, {:ok, view, html}}, expected_html) do
+        assert html =~ expected_html
+        {conn, {:ok, view, html}}
+      end
+
+      def refute_visible({conn, {:ok, view, html}}, unexpected_html) do
+        refute html =~ unexpected_html
+        {conn, {:ok, view, html}}
       end
 
       def assert_visible({conn, {:ok, view, html}}, selector, expected_html) do
