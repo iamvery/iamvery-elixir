@@ -3,18 +3,15 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
     quote do
       import Phoenix.LiveViewTest
 
+      ########
+      # Entry
+
       def start(conn, path) do
         {conn, live(conn, path)}
       end
 
-      def escape(html) do
-        Plug.HTML.html_escape(html)
-      end
-
-      def rerender({conn, {:ok, view, _html}}) do
-        html = render(view)
-        {conn, {:ok, view, html}}
-      end
+      #############
+      # Assertions
 
       def assert_html({conn, {:ok, view, html}}, expected_html) do
         assert html =~ expected_html
@@ -41,11 +38,6 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         {conn, {:ok, view, html}}
       end
 
-      def assert_path({conn, {:ok, view, html}}, path) do
-        assert_patch(view, path)
-        {conn, {:ok, view, html}}
-      end
-
       def assert_element({conn, {:ok, view, html}}, selector, text \\ nil) do
         assert has_element?(view, selector, text)
         {conn, {:ok, view, html}}
@@ -55,6 +47,14 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         refute has_element?(view, selector, text)
         {conn, {:ok, view, html}}
       end
+
+      def assert_path({conn, {:ok, view, html}}, path) do
+        assert_patch(view, path)
+        {conn, {:ok, view, html}}
+      end
+
+      ###############
+      # Interactions
 
       def click({conn, {:ok, view, _html}}, selector, text \\ nil) do
         html =
@@ -90,6 +90,18 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
           |> render_submit()
 
         {conn, follow_redirect(html, conn)}
+      end
+
+      ##########
+      # Utility
+
+      def rerender({conn, {:ok, view, _html}}) do
+        html = render(view)
+        {conn, {:ok, view, html}}
+      end
+
+      def escape(html) do
+        Plug.HTML.html_escape(html)
       end
 
       def view_in_browser({_conn, {:ok, view, _html}} = session) do
