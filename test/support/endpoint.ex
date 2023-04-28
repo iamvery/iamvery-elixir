@@ -10,6 +10,7 @@ defmodule Test.Support.Endpoint do
   defoverridable url: 0, script_name: 0, config: 1, config: 2, static_path: 1
   def config(:live_view), do: [signing_salt: "112345678212345678312345678412"]
   def config(:secret_key_base), do: String.duplicate("57689", 50)
+  def config(:otp_app), do: :iamvery
   def config(which), do: super(which)
   def config(which, default), do: super(which, default)
 end
