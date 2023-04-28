@@ -37,7 +37,11 @@ defmodule Iamvery.MixProject do
   defp deps do
     [
       {:ecto, "~> 3.9", only: [:dev, :test]},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:floki, "~> 0.34", only: :test},
+      {:phoenix, "~> 1.7", only: [:dev, :test]},
+      {:phoenix_live_view, "~> 0.18", only: [:dev, :test]},
+      {:plug, "~> 1.14", only: [:dev, :test]}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]
