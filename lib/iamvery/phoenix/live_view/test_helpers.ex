@@ -91,6 +91,11 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
 
         {conn, follow_redirect(html, conn)}
       end
+
+      def view_in_browser({_conn, {:ok, view, _html}} = session) do
+        open_browser(view)
+        session
+      end
     end
   end
 end
