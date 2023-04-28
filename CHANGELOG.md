@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- New function for easily opening current state of pipeline up in a browser. See #6 and #18
+
 ### Fixes
 - Incorrect return value for rendered HTML prevents pipelining. See #12
 
