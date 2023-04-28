@@ -38,6 +38,14 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     end
   end
 
+  describe "interactions" do
+    test "clicking", %{conn: conn} do
+      start(conn, "/")
+      |> click("#link-1 a")
+      |> assert_visible("Home")
+    end
+  end
+
   test "the pipeline works", %{conn: conn} do
     start(conn, "/")
     |> click("#link-1 a", "Edit")
