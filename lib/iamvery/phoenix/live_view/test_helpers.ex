@@ -56,6 +56,12 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       end
 
       def assert_path({conn, {:ok, view, html}}, path) do
+        IO.warn("""
+        Tests should avoid leaking details about the underlying framework.Lean
+        on asserting things about the page itself rather than LiveView-specific
+        concepts like "patching".
+        """)
+
         assert_patch(view, path)
         {conn, {:ok, view, html}}
       end

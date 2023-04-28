@@ -52,6 +52,11 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     end
   end
 
+  # NOTE: This is the original test that I'm going to leave around a bit longer
+  # for library coverage. It shouldn't be changed much anymore as smaller tests
+  # are prefered to focus on specific behavior. This test may use some
+  # deprecated interfaces.
+  @tag :deprecated
   test "the pipeline works", %{conn: conn} do
     start(conn, "/")
     |> click("#link-1 a", "Edit")
