@@ -19,6 +19,7 @@ defmodule Iamvery.MixProject do
       app: :iamvery,
       version: "0.9.0",
       elixir: "~> 1.12",
+      elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       description: @description,
       package: @package,
@@ -33,11 +34,18 @@ defmodule Iamvery.MixProject do
     ]
   end
 
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
       {:ecto, "~> 3.9", only: [:dev, :test]},
-      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
+      {:floki, "~> 0.34", only: :test},
+      {:phoenix, "~> 1.7", only: [:dev, :test]},
+      {:phoenix_live_view, "~> 0.18", only: [:dev, :test]},
+      {:plug, "~> 1.14", only: [:dev, :test]}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
     ]

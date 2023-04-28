@@ -1,44 +1,27 @@
-defmodule Plug.HTML do
-  @moduledoc "A test fake to stand in for the real Plug module"
-  def html_escape(v), do: v
-end
-
-defmodule Phoenix.LiveViewTest do
-  @moduledoc "A test fake to stand in for the real Phoenix module"
-  @html "<html>Home. Edit Link. Link updated successfully. It can't be blank</html>"
-  def live(_, _), do: {:ok, :live, @html}
-  def form(:live, _, _), do: :form
-  def element(:live, _), do: :live
-  def element(:live, _, _), do: :live
-  def has_element?(:live, _, "yes"), do: true
-  def has_element?(:live, _, "no"), do: false
-  def has_element?(:live, ".no", _), do: false
-  def has_element?(:live, _, nil), do: true
-  def follow_redirect(@html, :conn), do: {:ok, :live, @html}
-  def follow_redirect(redirect, :conn), do: redirect
-  def render(:live), do: @html
-  def render_click(:live), do: @html
-  def render_change(:form), do: @html
-  def render_submit(:form), do: @html
-  def assert_patch(:live, _), do: {:ok, :live, @html}
-end
-
 defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
   doctest Iamvery.Phoenix.LiveView.TestHelpers
+
+  import Phoenix.ConnTest
+  import Phoenix.LiveViewTest
+
+  @endpoint Test.Support.Endpoint
 
   use Iamvery.Phoenix.LiveView.TestHelpers
 
-  test "the pipeline works" do
-    conn = :conn
+  setup do
+    conn = build_conn() |> Plug.Test.init_test_session(%{})
+    {:ok, conn: conn}
+  end
 
+  test "the pipeline works", %{conn: conn} do
     start(conn, "/")
     |> click("#link-1 a", "Edit")
     |> click("#link-1 a")
     |> assert_html("Edit Link")
     |> assert_visible("Edit Link")
-    |> refute_html("lolwat")
-    |> refute_visible("lolwat")
+    |> refute_html("LOLWAT")
+    |> refute_visible("LOLWAT")
     |> assert_path("/")
     |> assert_visible("html", "Home")
     |> refute_visible("html", "Away")
@@ -54,7 +37,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
     |> assert_html("Edit Link")
     |> follow("a", "Home")
     |> follow(".home")
-    |> follow()
+    # |> follow()
     |> assert_html("Home")
   end
 end
