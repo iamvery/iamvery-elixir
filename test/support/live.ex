@@ -13,8 +13,15 @@ defmodule Test.Support.Live do
         <textarea name="widget[lol]" />
         Link updated successfully
       </form>
+      <span class="count"><%= @count %></span>
     </html>
     """
+  end
+
+  @impl true
+  def mount(_params, _session, socket) do
+    socket = assign(socket, :count, 1)
+    {:ok, socket}
   end
 
   @impl true
@@ -42,6 +49,18 @@ defmodule Test.Support.Live do
   @impl true
   def handle_event("home", _params, socket) do
     socket = push_navigate(socket, to: "/")
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("redirect", _params, socket) do
+    socket = push_navigate(socket, to: "/redirect")
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_info(:increment, socket) do
+    socket = assign(socket, :count, socket.assigns.count + 1)
     {:noreply, socket}
   end
 end

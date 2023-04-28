@@ -50,6 +50,31 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
       |> click(".home")
       |> assert_visible("Home")
     end
+
+    test "forms", %{conn: conn} do
+      start(conn, "/")
+      |> change_form("#widget-form", widget: %{})
+      |> assert_visible(escape("can't be blank"))
+      |> submit_form("#widget-form", widget: %{lol: "wat"})
+      |> assert_visible("Link updated successfully")
+      |> rerender()
+      |> assert_visible("Home")
+    end
+  end
+
+  describe "utilities" do
+    test "rerender/1", %{conn: conn} do
+      session =
+        start(conn, "/")
+        |> assert_visible(".count", "1")
+
+      {_, {:ok, view, _}} = session
+      Process.send(view.pid, :increment, [])
+
+      session
+      |> rerender()
+      |> assert_visible(".count", "2")
+    end
   end
 
   # NOTE: This is the original test that I'm going to leave around a bit longer
