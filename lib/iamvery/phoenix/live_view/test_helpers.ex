@@ -64,6 +64,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       end
 
       def follow(session, selector, text \\ nil) do
+        IO.warn("The function follow/3 is deprecated. Use click/3 instead")
         click(session, selector, text)
       end
 
