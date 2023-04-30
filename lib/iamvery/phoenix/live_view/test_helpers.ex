@@ -70,10 +70,21 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       # Interactions
 
       def click({conn, {:ok, view, _html}}, selector, text \\ nil) do
-        case element(view, selector, text) |> render_click() do
-          html when is_binary(html) -> {conn, {:ok, view, html}}
-          redirect -> {conn, follow_redirect(redirect, conn)}
-        end
+        result = element(view, selector, text) |> render_click()
+        handle_redirects(conn, view, result)
+      end
+
+      defp handle_redirects(conn, view, html) when is_binary(html) do
+        {conn, {:ok, view, html}}
+      end
+
+      defp handle_redirects(conn, nil, {:ok, view, html}) do
+        {conn, {:ok, view, html}}
+      end
+
+      defp handle_redirects(conn, _view, redirect) do
+        result = follow_redirect(redirect, conn)
+        handle_redirects(conn, nil, result)
       end
 
       def follow(session, selector, text \\ nil) do
@@ -82,6 +93,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
       end
 
       def follow({conn, redirect}) do
+        IO.warn("The function click/3 handles following redirects recursively")
         {conn, follow_redirect(redirect, conn)}
       end
 

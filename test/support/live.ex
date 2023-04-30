@@ -14,6 +14,7 @@ defmodule Test.Support.Live do
         Link updated successfully
       </form>
       <span class="count"><%= @count %></span>
+      <a phx-click="redirect">Redirect</a>
     </html>
     """
   end

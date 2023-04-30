@@ -49,6 +49,8 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
       start(conn, "/")
       |> click(".home")
       |> assert_visible("Home")
+      |> click("[phx-click=redirect]")
+      |> assert_visible("Home")
     end
 
     test "forms", %{conn: conn} do
