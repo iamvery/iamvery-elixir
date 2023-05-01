@@ -3,7 +3,6 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
   doctest Iamvery.Phoenix.LiveView.TestHelpers
 
   import Phoenix.ConnTest
-  import Phoenix.LiveViewTest
 
   @endpoint Test.Support.Endpoint
 
