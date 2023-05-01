@@ -13,6 +13,9 @@ defmodule Test.Support.Live do
         <textarea name="widget[lol]" />
         Link updated successfully
       </form>
+      <form id="other-form" phx-submit="submitish">
+        <textarea name="other[wat]" />
+      </form>
       <span class="count"><%= @count %></span>
       <a phx-click="redirect">Redirect</a>
     </html>
@@ -44,6 +47,11 @@ defmodule Test.Support.Live do
   @impl true
   def handle_event("submitted", _params, socket) do
     socket = push_navigate(socket, to: "/")
+    {:noreply, socket}
+  end
+
+  @impl true
+  def handle_event("submitish", _params, socket) do
     {:noreply, socket}
   end
 

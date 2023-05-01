@@ -59,6 +59,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpersTest do
       |> submit_form("#widget-form", widget: %{lol: "wat"})
       |> assert_visible("Link updated successfully")
       |> rerender()
+      |> submit_form("#other-form", other: %{wat: "haha"})
       |> assert_visible("Home")
     end
   end

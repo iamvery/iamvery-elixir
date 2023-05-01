@@ -219,8 +219,7 @@ defmodule Iamvery.Phoenix.LiveView.TestHelpers do
         |> form(unquote(selector), unquote(attributes))
         |> render_submit()
 
-      # TODO: Handle this recursively using handle_redirect/3?
-      {conn, follow_redirect(html, conn)}
+      handle_redirects(conn, view, html)
     end
   end
 
