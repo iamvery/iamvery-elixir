@@ -6,6 +6,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## Added
+- Documentation for test helpers module and functions. See #23
+- Better testing strategy for live view test helpers. See #23
+
+## Changed
+- Many of the functions are now imported rather than generated, with a few
+  exceptions that became macros due to dependency on the using module. This
+  produces better stacktraces and makes documentation more accessible. See #23
+
 ## [0.10.0] - 2023-04-28
 
 ### Added
