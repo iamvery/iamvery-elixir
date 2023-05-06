@@ -1,5 +1,7 @@
 defmodule Iamvery.Phoenix.LiveView.TestHelpers do
   defmacro __using__([]) do
+    IO.warn(inspect(__MODULE__) <> " is deprecated. See https://github.com/iamvery/skipper")
+
     quote do
       import Phoenix.LiveViewTest
 
